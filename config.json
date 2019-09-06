@@ -1,4 +1,5 @@
 {
 "http_local_port":                  8090,
+"ssdp_detection_interval":          10000,
 "debug":                            false
 }
