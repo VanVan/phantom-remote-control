@@ -14,3 +14,5 @@ if (config.debug) {
 	const dotenv = require('dotenv');
 	dotenv.config();
 }
+var ssdp = require('node-ssdp').Client;
+var client = new ssdp();
