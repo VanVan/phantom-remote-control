@@ -1,5 +1,8 @@
 {
 "http_local_port":                  8090,
+"devialet_ipaddress":               "autodetect",
+"devialet_port":                    "autodetect",
+"devialet_device_description_xml":  "autodetect",
 "ssdp_detection_interval":          10000,
 "debug":                            false
 }

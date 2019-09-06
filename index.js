@@ -62,4 +62,21 @@ function create_http_server() {
 }
 
 
+
+console.log("Searching for Devialet Phantom or Dialog ...");
+console.log("This may take several minutes");
+
+//On force
+if (config.devialet_port && config.devialet_ipaddress && config.devialet_port != 'autodetect' && config.devialet_ipaddress != 'autodetect') {
+	devialetDevice.host = config.devialet_ipaddress;
+	devialetDevice.port = config.devialet_port;
+	console.log('Detection forced from config file to be '+config.devialet_ipaddress+':'+config.devialet_port+' -> Only set volume usable');
+}
+else if (config.devialet_device_description_xml && config.devialet_device_description_xml != 'autodetect') {
+	clientMedia = new MediaRendererClient(config.devialet_device_description_xml);
+	devialetDevice.host = parseUri(config.devialet_device_description_xml).host;
+	devialetDevice.port = parseUri(config.devialet_device_description_xml).port;
+	console.log('Detection forced from config device description to be '+devialetDevice.host+':'+devialetDevice.port);
+}
+else
 	searchDevialetSpeaker();
