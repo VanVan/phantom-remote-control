@@ -10,3 +10,7 @@
 
 
 const config = require('./config.json');
+if (config.debug) {
+	const dotenv = require('dotenv');
+	dotenv.config();
+}
