@@ -20,6 +20,8 @@ var client = new ssdp();
 var http = require('http');
 var url = require('url');
 var request = require('request');
+var MediaRendererClient = require('upnp-mediarenderer-client');
+var clientMedia=null;
 var devialetDevice = {};
 
 
@@ -40,6 +42,7 @@ client.on('response', function inResponse(headers, code, rinfo) {
   
 			res.on('data', (data) => {
 			  if (data.includes('Devialet UPnP Renderer')) {
+				clientMedia = new MediaRendererClient(headers.LOCATION);
 				devialetDevice.host = parseUri(headers.LOCATION).host;
 				devialetDevice.port = parseUri(headers.LOCATION).port;
 				console.log("Devialet found : "+devialetDevice.host+":"+devialetDevice.port);

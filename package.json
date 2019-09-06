@@ -3,6 +3,7 @@
     "node-ssdp": "^4.0.0",
     "parseuri": "0.0.6",
     "request": "^2.88.0",
+    "upnp-mediarenderer-client": "^1.2.4"
   },
   "name": "phantom-remote-control",
   "description": "HTTP Adapter to control Devialet Phantom Speakers (Play, Pause, Volume etc.)",
