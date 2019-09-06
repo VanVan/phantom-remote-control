@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+  },
+  "name": "phantom-remote-control",
+  "description": "HTTP Adapter to control Devialet Phantom Speakers (Play, Pause, Volume etc.)",
+  "version": "0.1.0",
+  "main": "index.js",
+  "devDependencies": {
+    "dotenv": "^8.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VanVan/phantom-remote-control.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/VanVan/phantom-remote-control/issues"
+  },
+  "homepage": "https://github.com/VanVan/phantom-remote-control#readme"
+}
