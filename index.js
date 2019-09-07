@@ -188,6 +188,10 @@ function create_http_server() {
 
 	var q = url.parse(req.url, true).query;
 
+	if (!devialetDevice.host)
+		return res.end("<h2>Devialet not found</h2><h5>Please wait ...<h5>"+
+		'<META http-equiv="refresh" content="10; URL="><style>body{text-align: center}.lds-dual-ring{display:inline-block;width:64px;height:64px;} .lds-dual-ring:after{content:" ";display:block;width:46px;height:46px;margin:1px;border-radius:50%;border:5px solid #fff;border-color:#888 transparent #888 transparent;animation:lds-dual-ring 1.2s linear infinite;} @keyframes lds-dual-ring{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}</style><div class="lds-dual-ring"></div>');
+	
 	
 	
 	}).listen(config.http_local_port);
