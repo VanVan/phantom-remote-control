@@ -201,6 +201,19 @@ function create_http_server() {
 		});
 		
 	} else if(q.play) {
+		if (q.play.length < 5) {
+			clientMedia.play(function(err, result) {
+				if (err) {
+					console.log(err);
+					res.end('Error: '+err);
+				}
+				else {
+					console.log('Play');
+					res.end("Play");
+				}
+			});
+		}
+			else {
 				if (q.play.split('.').pop() != 'mp3')
 					return res.end('You can only play MP3 file ...');
 
@@ -224,7 +237,7 @@ function create_http_server() {
 			  }, 300);
 
 		  });
-		
+		}
 
 	} else if (q.stop) {
 		clientMedia.stop(function(err, result) {
