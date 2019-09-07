@@ -283,7 +283,19 @@ function create_http_server() {
 			res.end("getDuration "+result);
 			}
 		});
-	} else
+	} else if (q.seek) {
+		clientMedia.seek(q.seek, function(err, result) {
+			if (err) {
+				console.log(err);
+				res.end('Error: '+err);
+			}
+			else {
+			console.log('Seek '+q.seek);
+			res.end("Seek "+q.seek);
+			}
+		});
+	}
+	else
 	{
 		res.end("<h2>phantom-remote-control</h2> <h5>Please specify a command</h5>");
 	}
