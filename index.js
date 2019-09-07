@@ -201,6 +201,20 @@ function create_http_server() {
 		});
 		
 	} 
+	else if(q.setVolume == 'up')
+	{ 
+		if (!clientMedia)
+			return res.end('Volume Up & Down not available');
+
+		clientMedia.getVolume(function(err, volume) {
+			volume = volume+config.volume_step>100?100:volume+config.volume_step;
+			setVolume(volume).then(function(volumeLevel) {
+				res.end('<h5>Volume successfully set to '+volumeLevel+'%</h5>');
+			}, function(volumeLevel) {
+				res.end('<p style="color:red;">Error, cannot set volume to '+volumeLevel+'%</p>');
+			})	
+		});
+	}
 	else if (q.getVolume) {
 			var txt = '';
 			clientMedia.getVolume(function(err, volume) {

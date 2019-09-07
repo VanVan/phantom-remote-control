@@ -4,5 +4,6 @@
 "devialet_port":                    "autodetect",
 "devialet_device_description_xml":  "autodetect",
 "ssdp_detection_interval":          10000,
+"volume_step":                      10,
 "debug":                            false
 }
