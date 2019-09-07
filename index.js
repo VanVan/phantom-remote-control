@@ -200,6 +200,32 @@ function create_http_server() {
 			res.end('<p style="color:red;">Error, cannot set volume to '+volumeLevel+'%</p>');
 		});
 		
+	} else if(q.play) {
+				if (q.play.split('.').pop() != 'mp3')
+					return res.end('You can only play MP3 file ...');
+
+		var options = { 
+			autoplay: true,
+			contentType: 'audio/mp3'
+		  };
+		  clientMedia.stop(function() {
+			  setTimeout(function() {
+				clientMedia.load(q.play, options, function(err, result) {
+					if(err) {
+						res.end("Error, unable to play file");
+						console.log("Error, unable to play file");
+						console.log(err);
+					}
+					else {
+						console.log('playing '+q.play+' ...');
+						res.end("Playing "+q.play+' ...');
+					}
+				  });
+			  }, 300);
+
+		  });
+		
+
 	} else if (q.stop) {
 		clientMedia.stop(function(err, result) {
 			if (err) {
