@@ -200,6 +200,17 @@ function create_http_server() {
 			res.end('<p style="color:red;">Error, cannot set volume to '+volumeLevel+'%</p>');
 		});
 		
+	} else if (q.stop) {
+		clientMedia.stop(function(err, result) {
+			if (err) {
+				console.log(err);
+				res.end('Error: '+err);
+			}
+			else {
+			console.log('Stopped');
+			res.end("Stopped");
+			}
+		});
 	} else if (q.pause) {
 		clientMedia.pause(function(err, result) {
 			if (err) {
