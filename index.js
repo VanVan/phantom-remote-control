@@ -122,6 +122,44 @@ function setVolume(volumeLevel)
 }
 
 /**
+ * Get Volume of Devialet Speaker
+ * @returns {Promise} Returns current volume level
+ */
+function getVolume()
+{
+	return new Promise(function(resolve, reject) {		
+		var http_options = {
+		  method: 'POST',
+		  path: '/Control/LibRygelRenderer/RygelRenderingControl',
+		  hostname: devialetDevice.host,
+		  port: devialetDevice.port,
+		  headers: {
+		    'Content-Type': 'text/xml',
+		    'SOAPACTION': 'urn:schemas-upnp-org:service:RenderingControl:2#GetVolume',
+		    'Content-Length': 350
+		  }
+		}
+		
+		var req = http.request(http_options, (res) => {
+		  res.setEncoding('utf8');
+
+		  res.on('data', (data) => {
+			resolve(data);
+			console.log(data);
+		  });
+		});
+		 
+		req.on('error', (e) => {
+		  console.log(`Volume cannot be retrieved: ${e.message}`);
+		  reject(e);
+		});
+		req.end();	
+
+		process.stdout.write("Trying to get Volume");
+	});
+}
+
+/**
  * Search Devialet system on network
  */
 function searchDevialetSpeaker()
