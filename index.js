@@ -248,6 +248,17 @@ function create_http_server() {
 			res.end("Paused");
 			}
 		});
+	} else if (q.getPosition) {
+		clientMedia.getPosition(function(err, result) {
+			if (err) {
+				console.log(err);
+				res.end('Error: '+err);
+			}
+			else {
+			console.log('getPosition '+result);
+			res.end("getPosition "+result);
+			}
+		});
 	} else if (q.getDuration) {
 		clientMedia.getDuration(function(err, result) {
 			if (err) {
