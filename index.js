@@ -25,6 +25,41 @@ var devialetDevice = {};
 
 create_http_server();
 
+client.on('response', function inResponse(headers, code, rinfo) {
+	console.log('Detected device ip: '+rinfo.address);
+	if (typeof headers.LOCATION != 'undefined' && headers.LOCATION) { // Download file
+		var http_options = {
+			hostname: parseUri(headers.LOCATION).host,
+			port: parseUri(headers.LOCATION).port,
+			path: parseUri(headers.LOCATION).path,
+			method: 'GET'
+		  }
+		  
+		  var req = http.request(http_options, (res) => {
+			res.setEncoding('utf8');
+  
+			res.on('data', (data) => {
+			  if (data.includes('Devialet UPnP Renderer')) {
+				devialetDevice.host = parseUri(headers.LOCATION).host;
+				devialetDevice.port = parseUri(headers.LOCATION).port;
+				console.log("Devialet found : "+devialetDevice.host+":"+devialetDevice.port);
+			  }
+			});
+		  });
+		   
+		  req.on('error', (e) => {
+			console.log(`get Location xml problem with request: ${e.message}`);
+		  });
+		  
+		  req.end();
+	}
+	if(rinfo.address == config.devialet_ipaddress) {
+		devialetDevice.host = parseUri(headers.LOCATION).host;
+		devialetDevice.port = parseUri(headers.LOCATION).port;
+	}
+		
+});
+
 
 
 /**
