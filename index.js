@@ -64,6 +64,62 @@ client.on('response', function inResponse(headers, code, rinfo) {
 });
 
 
+/**
+ * Set volume of Devialet speaker
+ * @param {int} volumeLevel
+ * @returns {Promise} Returns new volume level
+ */
+function setVolume(volumeLevel)
+{
+	return new Promise(function(resolve, reject) {
+		var xml = '<s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">'+
+		'<s:Body>'+
+			'<u:SetVolume xmlns:u="urn:schemas-upnp-org:service:RenderingControl:2">'+
+			'<InstanceID>0</InstanceID>'+
+			'<Channel>Master</Channel>'+
+			'<DesiredVolume>'+volumeLevel+'</DesiredVolume>'+
+			'</u:SetVolume>'+
+		'</s:Body>'+
+	'</s:Envelope>';
+
+	var http_options = {
+	method: 'POST',
+	path: '/Control/LibRygelRenderer/RygelRenderingControl',
+	hostname: devialetDevice.host,
+	port: devialetDevice.port,
+	headers: {
+	'Content-Type': 'application/x-www-form-urlencoded',
+	'SOAPACTION': 'urn:schemas-upnp-org:service:RenderingControl:2#SetVolume',
+	'Content-Length': xml.length
+	}
+	}
+
+	var req = http.request(http_options, (res) => {
+		res.setEncoding('utf8');
+
+		res.on('data', (data) => {
+			if (data.includes('SetVolumeResponse')) {
+				console.log(' -> Success');
+				resolve(volumeLevel);
+			}
+			else {
+				console.log(' -> Error: volume unchanged');
+				reject(volumeLevel);
+			}
+		});
+	});
+
+	req.on('error', (e) => {
+		console.log(`Volume cannot be set: ${e.message}`);
+		reject(volumeLevel);
+	});
+	
+	req.write(xml); 
+	req.end();
+
+	process.stdout.write("Trying to set Volume to "+volumeLevel+"%");
+	});
+}
 
 /**
  * Search Devialet system on network
