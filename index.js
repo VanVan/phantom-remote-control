@@ -248,8 +248,18 @@ function create_http_server() {
 			res.end("Paused");
 			}
 		});
-	}
-	else
+	} else if (q.getDuration) {
+		clientMedia.getDuration(function(err, result) {
+			if (err) {
+				console.log(err);
+				res.end('Error: '+err);
+			}
+			else {
+			console.log('getDuration '+result);
+			res.end("getDuration "+result);
+			}
+		});
+	} else
 	{
 		res.end("<h2>phantom-remote-control</h2> <h5>Please specify a command</h5>");
 	}
