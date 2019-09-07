@@ -200,7 +200,18 @@ function create_http_server() {
 			res.end('<p style="color:red;">Error, cannot set volume to '+volumeLevel+'%</p>');
 		});
 		
-	} 
+	} else if (q.pause) {
+		clientMedia.pause(function(err, result) {
+			if (err) {
+				console.log(err);
+				res.end('Error: '+err);
+			}
+			else {
+			console.log('Paused');
+			res.end("Paused");
+			}
+		});
+	}
 	else
 	{
 		res.end("<h2>phantom-remote-control</h2> <h5>Please specify a command</h5>");
