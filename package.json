@@ -5,6 +5,10 @@
     "request": "^2.88.0",
     "upnp-mediarenderer-client": "^1.2.4"
   },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=4.1.2"
+  },
   "name": "phantom-remote-control",
   "description": "HTTP Adapter to control Devialet Phantom Speakers (Play, Pause, Volume etc.)",
   "version": "1.0.0",
