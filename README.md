@@ -94,6 +94,32 @@ Each variable in the config can have these options:
 * **volume_step**: Up and Down volume step to use.
 * **debug**: Let you use a .env file to specify environnement variable.
 
+## ⌨ Using this program as a service
+
+If you use it every day with your speakers, it would be better to configure it as a service on a Linux server or on your personal computer. By doing it, the program will always be running.
+
+
+### Linux with systemd
+
+You can simply install the service on Linux by entering the command
+
+```
+sudo node install_service.js
+```
+
+It will create a file `/etc/systemd/system/devialet.service`
+
+You can then start the service by doing `sudo systemctl start devialet`
+
+### Windows
+
+You can simply install the service on Windows by entering the command
+
+```
+node install_service.js
+```
+To check if it works, just open `http://127.0.0.1:8090` on your browser
+
 ## ✏️ Contributing
 
 - Add new control features
