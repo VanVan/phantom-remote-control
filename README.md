@@ -40,7 +40,9 @@ Control the musical playback of your Devialet speakers
 ## 🔧 [Installation](#install)
 
 ```
-npm install phantom-remote-control
+git clone https://github.com/VanVan/phantom-remote-control.git
+cd phantom-remote-control
+npm install
 node index.js
 ```
 You need [NodeJS](http://nodejs.org) and [NPM](https://www.npmjs.com/)
@@ -94,12 +96,12 @@ Each variable in the config can have these options:
 * **volume_step**: Up and Down volume step to use.
 * **debug**: Let you use a .env file to specify environnement variable.
 
-## ⌨ Using this program as a service
+## ![autostart](https://user-images.githubusercontent.com/388581/66359530-cd85f880-e977-11e9-9bb4-8ecfa15d51ec.png)  Autostart this program as a service
 
 If you use it every day with your speakers, it would be better to configure it as a service on a Linux server or on your personal computer. By doing it, the program will always be running.
 
 
-### Linux with systemd
+### ![linux20-2](https://user-images.githubusercontent.com/388581/66359270-ba265d80-e976-11e9-95b1-4d13436b2d4c.png) Linux with systemd
 
 You can simply install the service on Linux by entering the command
 
@@ -111,11 +113,12 @@ It will create a file `/etc/systemd/system/devialet.service`
 
 You can then start the service by doing `sudo systemctl start devialet`
 
-### Windows
+### ![Windows](https://user-images.githubusercontent.com/388581/66359040-bf36dd00-e975-11e9-9d08-83548dac921c.png) Windows
 
 You can simply install the service on Windows by entering the command
 
 ```
+npm install node-windows
 node install_service.js
 ```
 To check if it works, just open `http://127.0.0.1:8090` on your browser
