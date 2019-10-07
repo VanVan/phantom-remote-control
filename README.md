@@ -8,7 +8,7 @@
 <a href="https://www.devialet.com/fr-fr/">
     <img src="https://user-images.githubusercontent.com/388581/66270494-b995a600-e854-11e9-9b94-39ea54648fac.png" alt="Devialet" title="Devialet Phantom" align="right" height="90" /></a>
 
-Devialet phantom-remote-control
+Devialet phantom-remote-control [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AF3T44KDPA8SJ)
 =======================
 
 > HTTP Adapter to remote control Devialet Phantom Speakers
@@ -142,3 +142,8 @@ To check if it works, just open `http://127.0.0.1:8090` on your browser
 ## 🎓 Copyright and license
 
 Code released under the [GNU General Public License v3.0](https://github.com/VanVan/phantom-remote-control/blob/master/LICENSE).
+
+## 💰 Donation
+If this project help you, you can give me a cup of coffee :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AF3T44KDPA8SJ)
