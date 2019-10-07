@@ -110,7 +110,7 @@ function setVolume(volumeLevel)
 	});
 
 	req.on('error', (e) => {
-		console.log(`Volume cannot be set: ${e.message}`);
+		console.log(` -> Error, volume cannot be set: ${e.message}`);
 		reject(volumeLevel);
 	});
 	
@@ -196,7 +196,7 @@ function create_http_server() {
 	{
 		setVolume(parseInt(q.setVolume)).then(function() {
 			res.end('<h5>Volume successfully set to '+volumeLevel+'%</h5>');
-		}, function() {
+		}, function(volumeLevel) {
 			res.end('<p style="color:red;">Error, cannot set volume to '+volumeLevel+'%</p>');
 		});
 		
@@ -207,12 +207,14 @@ function create_http_server() {
 			return res.end('Volume Up & Down not available');
 
 		clientMedia.getVolume(function(err, volume) {
+			if (err)
+				res.end('<p style="color:red;">Error, unable to get current volume:'+err+'</p>');
 			volume = volume+config.volume_step>100?100:volume+config.volume_step;
 			setVolume(volume).then(function(volumeLevel) {
 				res.end('<h5>Volume successfully set to '+volumeLevel+'%</h5>');
 			}, function(volumeLevel) {
 				res.end('<p style="color:red;">Error, cannot set volume to '+volumeLevel+'%</p>');
-			})	
+			}) 
 		});
 	}
 	else if(q.setVolume == 'down')
@@ -221,6 +223,8 @@ function create_http_server() {
 			return res.end('Volume Up & Down not available');
 
 		clientMedia.getVolume(function(err, volume) {
+			if (err)
+				res.end('<p style="color:red;">Error, unable to get current volume:'+err+'</p>');
 			volume=volume-config.volume_step<0?0:volume-config.volume_step;
 			setVolume(volume).then(function(volumeLevel) {
 				res.end('<h5>Volume successfully set to '+volumeLevel+'%</h5>');
@@ -230,8 +234,9 @@ function create_http_server() {
 		});
 	}
 	else if (q.getVolume) {
-			var txt = '';
 			clientMedia.getVolume(function(err, volume) {
+				if (err)
+					res.end('<p style="color:red;">Error, unable to get current volume:'+err+'</p>');
 				console.log('Volume: '+volume);
 				res.end('<h5>Volume: '+volume+'%</h5>');
 			});
@@ -278,7 +283,7 @@ function create_http_server() {
 		clientMedia.stop(function(err, result) {
 			if (err) {
 				console.log(err);
-				res.end('Error: '+err);
+				res.end('Stop: '+err);
 			}
 			else {
 			console.log('Stopped');
@@ -289,7 +294,7 @@ function create_http_server() {
 		clientMedia.pause(function(err, result) {
 			if (err) {
 				console.log(err);
-				res.end('Error: '+err);
+				res.end('Pause: '+err);
 			}
 			else {
 			console.log('Paused');
@@ -300,33 +305,33 @@ function create_http_server() {
 		clientMedia.getPosition(function(err, result) {
 			if (err) {
 				console.log(err);
-				res.end('Error: '+err);
+				res.end('getPosition: '+err);
 			}
 			else {
-			console.log('getPosition '+result);
-			res.end("getPosition "+result);
+			console.log('Position '+result);
+			res.end("Position "+result);
 			}
 		});
 	} else if (q.getDuration) {
 		clientMedia.getDuration(function(err, result) {
 			if (err) {
 				console.log(err);
-				res.end('Error: '+err);
+				res.end('getDuration: '+err);
 			}
 			else {
-			console.log('getDuration '+result);
-			res.end("getDuration "+result);
+			console.log('Duration '+result);
+			res.end("Duration "+result);
 			}
 		});
 	} else if (q.seek) {
 		clientMedia.seek(q.seek, function(err, result) {
 			if (err) {
 				console.log(err);
-				res.end('Error: '+err);
+				res.end('Seek: '+err);
 			}
 			else {
-			console.log('Seek '+q.seek);
-			res.end("Seek "+q.seek);
+			console.log('Seeked to '+q.seek);
+			res.end("Seeked to "+q.seek);
 			}
 		});
 	}
