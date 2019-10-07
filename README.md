@@ -39,6 +39,8 @@ Control the musical playback of your Devialet speakers
 
 ## 🔧 [Installation](#install)
 
+### If you are a developer
+
 ```
 git clone https://github.com/VanVan/phantom-remote-control.git
 cd phantom-remote-control
@@ -46,6 +48,14 @@ npm install
 node index.js
 ```
 You need [NodeJS](http://nodejs.org) and [NPM](https://www.npmjs.com/)
+
+### If you just want something easy to use
+
+All you have to do is download the application, then run it.
+
+| ![Windows](https://user-images.githubusercontent.com/388581/66359040-bf36dd00-e975-11e9-9d08-83548dac921c.png)   Windows| ![mac](https://user-images.githubusercontent.com/388581/66363446-9ff47b80-e986-11e9-99f8-91b09f580420.png) Mac            | ![linux](https://user-images.githubusercontent.com/388581/66359270-ba265d80-e976-11e9-95b1-4d13436b2d4c.png) Linux|
+| ------------------- | ------------------- | ------------------- |
+|[Download](https://github.com/VanVan/phantom-remote-control/raw/binary/bin/phantom-remote-win.exe)|[Download](https://github.com/VanVan/phantom-remote-control/raw/binary/bin/phantom-remote-macos)|[Download](https://github.com/VanVan/phantom-remote-control/raw/binary/bin/phantom-remote-linux)|
 
 ## ▶️ [Usage](#usage)
 
