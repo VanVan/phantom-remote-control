@@ -355,7 +355,11 @@ function create_http_server() {
 	}
 	else
 	{
-		res.end("<h2>phantom-remote-control</h2> <h5>Please specify a command</h5>");
+		res.end('<meta charset="UTF-8"><h2>phantom-remote-control ✔️</h2> <h4>Please specify a command</h4>'+
+		'<br /><br /><h5>Example</h5><a href="?play='+encodeURI('https://raw.githubusercontent.com/VanVan/phantom-remote-control/binary/sound/test.mp3')+'">Play 15s sound</a><br />'+
+			'<a href="?setVolume=up">Increase the volume</a><br />'+
+			'<a href="?setVolume=down">Reduce the volume</a><br />'+
+			'<a href="?stop=1">Stop sound</a>');
 	}
 	
 	
