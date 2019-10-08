@@ -25,6 +25,7 @@ var clientMedia=null;
 var devialetDevice = {};
 
 
+list_local_address();
 create_http_server();
 
 client.on('response', function inResponse(headers, code, rinfo) {
@@ -176,6 +177,23 @@ function searchDevialetSpeaker()
 	}, config.ssdp_detection_interval);
 }
 
+/**
+ * List local ip address
+ */
+function list_local_address() {
+	console.log();
+	var os = require('os');
+	var ifaces = os.networkInterfaces();
+	console.log('You can open your browser on:');
+	Object.keys(ifaces).forEach(function (ifname) {
+		ifaces[ifname].forEach(function (iface) {
+			if ('IPv4' !== iface.family || iface.internal !== false)
+				return;
+			console.log('http://'+iface.address+':'+config.http_local_port);
+		});
+	});
+	console.log();
+}
 
 /**
  * Create HTTP server to listen request
