@@ -1,3 +1,6 @@
+<p align="center">README available in<br />
+<a href="README.md"><img src="https://user-images.githubusercontent.com/388581/66407091-ee3c6580-e9ec-11e9-9081-b222df92896c.png" alt="English" width="40px" /></a> <a href="README_FR.md"><img src="https://user-images.githubusercontent.com/388581/66407034-da90ff00-e9ec-11e9-827b-dab984a76e42.png" alt="Français" width="40px" /></a><br /><br /><br /></p>
+
 ![NAC-depend-none](https://img.shields.io/badge/dependency-nodessdp-green.svg)
 [![NODEJS](https://img.shields.io/node/v/phantom-remote-control)](https://www.npmjs.com/package/phantom-remote-control)
 [![NPM](https://img.shields.io/npm/v/phantom-remote-control)](https://www.npmjs.com/package/phantom-remote-control)
