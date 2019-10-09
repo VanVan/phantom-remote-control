@@ -273,8 +273,8 @@ function create_http_server() {
 		}
 			else {
 				var ext = q.play.split('.').pop();
-				if (ext != 'mp3' && ext != 'wav')
-					return res.end('You can only play MP3 or Wav file ...');
+				if (ext != 'mp3' && ext != 'wav' && ext != 'ogg')
+					return res.end('You can only play MP3 / WAV / OGG file ...');
 
 		var options = { 
 			autoplay: true,
