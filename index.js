@@ -272,12 +272,13 @@ function create_http_server() {
 			});
 		}
 			else {
-				if (q.play.split('.').pop() != 'mp3')
-					return res.end('You can only play MP3 file ...');
+				var ext = q.play.split('.').pop();
+				if (ext != 'mp3' && ext != 'wav')
+					return res.end('You can only play MP3 or Wav file ...');
 
 		var options = { 
 			autoplay: true,
-			contentType: 'audio/mp3'
+			contentType: 'audio/'+ ext
 		  };
 		  clientMedia.stop(function() {
 			  setTimeout(function() {
