@@ -38,6 +38,7 @@ if (process.platform == 'win32' || process.platform == 'win64') {
   "User=pi\n"+
   "Group=pi\n"+
   "Environment=NODE_ENV=production\n"+
+  "Type=idle\n"+
   "[Install]\n"+
   "WantedBy=multi-user.target";
 
