@@ -28,7 +28,11 @@ if (process.platform == 'win32' || process.platform == 'win64') {
 } else {
   const fs = require('fs');
 
-  let lyrics = "[Service]\n"+
+  let lyrics = "[Unit]\n"+
+  "Description=Devialet Phantom remote control\n"+
+  "Wants=network-online.target\n"+
+  "After=network.target network-online.target\n"+
+  "[Service]\n"+
   "WorkingDirectory="+process.cwd()+"\n"+
   "ExecStart=/usr/bin/nodejs "+process.cwd()+"/index.js\n"+
   "Restart=always\n"+
