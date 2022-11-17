@@ -42,7 +42,7 @@ client.on('response', function inResponse(headers, code, rinfo) {
 			res.setEncoding('utf8');
   
 			res.on('data', (data) => {
-			  if (data.includes('Devialet UPnP Renderer')) {
+			  if (data.includes('Devialet UPnP Renderer') || data.includes('Phantom')) {
 				clientMedia = new MediaRendererClient(headers.LOCATION);
 				devialetDevice.host = parseUri(headers.LOCATION).host;
 				devialetDevice.port = parseUri(headers.LOCATION).port;
